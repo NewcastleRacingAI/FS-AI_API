@@ -87,11 +87,11 @@ static pthread_mutex_t can_read_mutex = PTHREAD_MUTEX_INITIALIZER;
 static struct timespec last_set, this_set;
 
 // tx frames
-static struct can_frame AI2VCU_Status		= {0x510,8};
-static struct can_frame AI2VCU_Drive_F		= {0x511,4};
-static struct can_frame AI2VCU_Drive_R		= {0x512,4};
-static struct can_frame AI2VCU_Steer		= {0x513,2};
-static struct can_frame AI2VCU_Brake		= {0x514,2};
+static struct can_frame AI2VCU_Status		= {0x510,{8},0,0,0,{0}};
+static struct can_frame AI2VCU_Drive_F		= {0x511,{4},0,0,0,{0}};
+static struct can_frame AI2VCU_Drive_R		= {0x512,{4},0,0,0,{0}};
+static struct can_frame AI2VCU_Steer		= {0x513,{2},0,0,0,{0}};
+static struct can_frame AI2VCU_Brake		= {0x514,{2},0,0,0,{0}};
 
 // rx frames
 #define VCU2AI_STATUS_ID		0x520
@@ -167,8 +167,8 @@ static volatile fs_ai_api_direction_request_e	AI2VCU_DIRECTION_REQUEST = DIRECTI
 static volatile uint8_t							AI2VCU_LAP_COUNTER = 0;
 static volatile uint8_t							AI2VCU_CONES_COUNT_ACTUAL = 0;
 static volatile uint16_t						AI2VCU_CONES_COUNT_ALL = 0;
-static volatile uint8_t							AI2VCU_VEH_SPEED_ACTUAL_kmh = 0;
-static volatile uint8_t							AI2VCU_VEH_SPEED_DEMAND_kmh = 0;
+//static volatile uint8_t							AI2VCU_VEH_SPEED_ACTUAL_kmh = 0;
+//static volatile uint8_t							AI2VCU_VEH_SPEED_DEMAND_kmh = 0;
 
 // AI2VCU_Drive_F
 static volatile uint16_t AI2VCU_FRONT_AXLE_TRQ_REQUEST_raw = 0;
@@ -281,7 +281,7 @@ static volatile uint8_t GPS_UTC_Second = 0;
 
 
 // functions
-static void *can_read_thread() {
+static void *can_read_thread(void*) {
 	struct can_frame read_frame;
 	
 	while(1)
