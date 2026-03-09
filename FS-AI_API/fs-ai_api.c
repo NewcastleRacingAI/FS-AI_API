@@ -577,14 +577,14 @@ int fs_ai_api_init(char* CAN_interface, int debug, int simulate) {
 	}
 
 	if(can_init(CAN_interface) < 0) {
-		if(debug_mode) { printf("Can't open [%s]", CAN_interface); }
+		if(debug_mode) { printf("Can't open [%s]\n", CAN_interface); }
 		return(EXIT_FAILURE);
 	}
 
 	// spawn thread
 	err = pthread_create(&can_read_tid, NULL, &can_read_thread, NULL);
 	if(err != 0) {
-		if(debug_mode) { printf("Can't create CAN read thread:[%s]", strerror(err)); }
+		if(debug_mode) { printf("Can't create CAN read thread:[%s]\n", strerror(err)); }
 		return(EXIT_FAILURE);
 	}
 
