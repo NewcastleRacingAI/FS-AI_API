@@ -697,8 +697,8 @@ void fs_ai_api_vcu2ai_get_data(fs_ai_api_vcu2ai *data) {
 	data->VCU2AI_RR_PULSE_COUNT = VCU2AI_RR_PULSE_COUNT;
 }
 
-
-void fs_ai_api_ai2vcu_set_data(fs_ai_api_ai2vcu *data) {
+int32_t
+fs_ai_api_ai2vcu_set_data(fs_ai_api_ai2vcu *data) {
 	// local input data buffers
 	fs_ai_api_mission_status_e		t_AI2VCU_MISSION_STATUS = 0;
 	fs_ai_api_direction_request_e	t_AI2VCU_DIRECTION_REQUEST = 0;
@@ -877,7 +877,9 @@ void fs_ai_api_ai2vcu_set_data(fs_ai_api_ai2vcu *data) {
 		can_send(&AI2VCU_Steer);
 		can_send(&AI2VCU_Brake);
 		clock_gettime(CLOCK_REALTIME,&last_set);
+                return 0;
 	}
+        return -1;
 }
 
 

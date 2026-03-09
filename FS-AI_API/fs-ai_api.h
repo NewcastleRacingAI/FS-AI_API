@@ -275,7 +275,7 @@ typedef struct can_stats_struct {
 int fs_ai_api_init(char *CAN_interface, int debug, int simulate);
 
 void fs_ai_api_vcu2ai_get_data(fs_ai_api_vcu2ai *data);
-void fs_ai_api_ai2vcu_set_data(fs_ai_api_ai2vcu *data);
+int32_t fs_ai_api_ai2vcu_set_data(fs_ai_api_ai2vcu *data);
 
 void fs_ai_api_imu_get_data(fs_ai_api_imu *data);
 void fs_ai_api_gps_get_data(fs_ai_api_gps *data);
