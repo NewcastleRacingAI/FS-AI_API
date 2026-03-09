@@ -1035,6 +1035,6 @@ void fs_ai_api_get_can_stats(can_stats_t *data) {
 }
 
 
-void fs_ai_api_clear_can_stats() {
+void fs_ai_api_clear_can_stats(void) {
 	memset(&can_stats, 0, sizeof(can_stats_t));
 }

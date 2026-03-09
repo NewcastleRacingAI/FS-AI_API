@@ -281,7 +281,7 @@ void fs_ai_api_imu_get_data(fs_ai_api_imu *data);
 void fs_ai_api_gps_get_data(fs_ai_api_gps *data);
 
 void fs_ai_api_get_can_stats(can_stats_t *data);
-void fs_ai_api_clear_can_stats();
+void fs_ai_api_clear_can_stats(void);
 
 #ifdef __cplusplus
 }
